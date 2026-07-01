@@ -62,10 +62,6 @@ cd backend
 ./mvnw spring-boot:run
 ```
 
-A API estará disponível em http://localhost:8080/api.
-
-Swagger UI: http://localhost:8080/swagger-ui.html
-
 ### Frontend (React)
 ```bash
 cd frontend
@@ -81,7 +77,7 @@ Frontend: http://localhost
 Backend: http://localhost:8080/api
 ````
 
-☸️ Kubernetes (Kind)
+### Kubernetes (Kind)
 ```bash
 # Criar cluster local
 kind create cluster --name smartstock
