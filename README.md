@@ -1,6 +1,7 @@
 # 🏬 SmartStock - Sistema Inteligente de Gestão de Estoque
 
-![SmartStock Dashboard](docs/dashboard.png) *(adicione uma screenshot depois)*
+<img width="1907" height="909" alt="Captura de tela 2026-06-25 182209" src="https://github.com/user-attachments/assets/99354ff6-747d-499d-b8f5-1629bb99e6b2" />
+
 
 Sistema completo de gestão de estoque para pequenos e médios varejistas, com previsão de demanda, alertas, leitor de código de barras, exportação de relatórios e muito mais.
 
