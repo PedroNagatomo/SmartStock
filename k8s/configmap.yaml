@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: smartstock
+data:
+  SPRING_DATASOURCE_URL: "jdbc:h2:file:/data/inventory;DB_CLOSE_DELAY=-1"
+  SPRING_DATASOURCE_USERNAME: "sa"
+  SPRING_DATASOURCE_PASSWORD: "password"
+  APP_JWT_SECRET: "smartstock-k8s-secret-change-me"   
+  APP_JWT_EXPIRATION: "86400000"

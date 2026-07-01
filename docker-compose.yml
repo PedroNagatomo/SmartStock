@@ -1,0 +1,42 @@
+
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: smartstock-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:file:/data/inventory;DB_CLOSE_DELAY=-1
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=password
+      # Segurança JWT (gere uma chave forte para produção)
+      - APP_JWT_SECRET=smartstock-secret-change-in-production-32chars
+      - APP_JWT_EXPIRATION=86400000
+    volumes:
+      - backend-data:/data
+    networks:
+      - smartstock-net
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: smartstock-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - smartstock-net
+    restart: unless-stopped
+
+volumes:
+  backend-data:
+
+networks:
+  smartstock-net:
+    driver: bridge

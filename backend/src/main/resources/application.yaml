@@ -1,0 +1,90 @@
+spring:
+  application:
+    name: smart-inventory
+    app:
+      alerts:
+        email:
+          enabled: ${EMAIL_ALERTS_ENABLED:false}
+
+  # Banco de dados H2 (desenvolvimento)
+  datasource:
+    url: jdbc:h2:file:./data/inventory;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Email (para alertas)
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:seu-email@gmail.com}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  # Scheduling
+  task:
+    scheduling:
+      pool:
+        size: 5
+
+# Servidor
+server:
+  port: 8080
+
+# Twilio (WhatsApp)
+twilio:
+  account:
+    sid: ${TWILIO_ACCOUNT_SID:}
+  auth:
+    token: ${TWILIO_AUTH_TOKEN:}
+  whatsapp:
+    from: ${TWILIO_WHATSAPP_FROM:+14155238886}
+    to: ${TWILIO_WHATSAPP_TO:}
+
+# Logging
+logging:
+  level:
+    com.inventory: INFO
+    org.hibernate.SQL: WARN
+
+  file:
+    name: logs/inventory.log
+    max-size: 10MB
+    max-history: 30
+
+# Swagger
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+  api-docs:
+    path: /api-docs
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

@@ -1,0 +1,36 @@
+# Dependências e build
+node_modules/
+dist/
+build/
+target/
+*.jar
+*.war
+
+# Logs
+logs/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Docker (se não quiser subir imagens)
+# docker-compose.override.yml
+
+# Variáveis de ambiente (NUNCA subir secrets)
+.env
+.env.local
+.env.production
+
+# Banco de dados local
+*.db
+*.mv.db
+data/
+backend/data/
+
+# Sistema
+.DS_Store
+Thumbs.db
